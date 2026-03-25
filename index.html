@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Pedido 💍</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+button {
+    margin: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#nao {
+    background: red;
+    color: white;
+}
+
+#sim {
+    background: green;
+    color: white;
+}
+
+img {
+    width: 100%;
+    margin-top: 10px;
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div id="inicio">
+<h2>⚠️ Atenção</h2>
+
+<button id="btn1" onclick="etapa1()">Responda com seriedade</button>
+<button id="btn2" onclick="etapa2()" style="display:none;">Preste MUITA atenção</button>
+<button id="btn3" onclick="etapa3()" style="display:none;">Pergunta muito séria</button>
+</div>
+
+<div id="pedido" style="display:none;">
+<h2>Quer casar comigo? 💍</h2>
+
+<button id="sim">Sim ❤️</button>
+<button id="nao">Não 😢</button>
+
+<p id="msg"></p>
+
+<img id="img1" src="https://i.imgur.com/3ZQ3ZQp.jpg">
+<img id="img2" src="https://i.imgur.com/8Km9tLL.jpg">
+
+</div>
+
+</div>
+
+<script>
+let tentativas = 0;
+
+function etapa1(){
+document.getElementById("btn1").style.display="none";
+document.getElementById("btn2").style.display="block";
+}
+
+function etapa2(){
+document.getElementById("btn2").style.display="none";
+document.getElementById("btn3").style.display="block";
+}
+
+function etapa3(){
+document.getElementById("inicio").style.display="none";
+document.getElementById("pedido").style.display="block";
+}
+
+const nao = document.getElementById("nao");
+
+nao.addEventListener("click", (e)=>{
+if(tentativas < 3){
+e.preventDefault();
+tentativas++;
+
+if(navigator.vibrate){
+navigator.vibrate(200);
+}
+
+const x = Math.random()*300;
+const y = Math.random()*300;
+
+nao.style.position="absolute";
+nao.style.left=x+"px";
+nao.style.top=y+"px";
+
+}else{
+
+if(navigator.vibrate){
+navigator.vibrate([300,100,300]);
+}
+
+document.getElementById("msg").innerText="Se não for comigo vai ser com Deus 🙏";
+document.getElementById("img2").style.display="block";
+}
+});
+
+document.getElementById("sim").onclick = ()=>{
+document.getElementById("msg").innerText="Amo vc minha macaquinha ❤️";
+document.getElementById("img1").style.display="block";
+};
+</script>
+
+</body>
+</html>
