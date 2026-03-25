@@ -115,6 +115,12 @@ nao.style.top=y+"px";
 if(navigator.vibrate){
 navigator.vibrate([300,100,300]);
 }
+function resetVisual() {
+    document.getElementById("msg").innerText = "";
+    document.getElementById("img1").style.display = "none";
+    document.getElementById("img2").style.display = "none";
+}
+    resetVisual();
 
 document.getElementById("msg").innerText="Se não for comigo vai ser com Deus 🤬";
 document.getElementById("img2").style.display="block";
@@ -122,6 +128,7 @@ document.getElementById("img2").style.display="block";
 });
 
 document.getElementById("sim").onclick = ()=>{
+    resetVisual();
 document.getElementById("msg").innerText="Amo vc minha macaquinha ❤️";
 document.getElementById("img1").style.display="block";
 };
